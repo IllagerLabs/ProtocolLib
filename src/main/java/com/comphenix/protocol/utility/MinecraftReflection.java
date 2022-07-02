@@ -684,6 +684,10 @@ public class MinecraftReflection {
 		}
 	}
 
+	public static Class<?> getHolder() {
+		return getMinecraftClass("core.Holder", "Holder");
+	}
+
 	/**
 	 * Retrieve the World (NMS) class.
 	 * @return The world class.

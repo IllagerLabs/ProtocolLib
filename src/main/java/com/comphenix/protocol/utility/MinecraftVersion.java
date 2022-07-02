@@ -50,6 +50,11 @@ public class MinecraftVersion implements Comparable<MinecraftVersion>, Serializa
 	public static final MinecraftVersion WILD_UPDATE = new MinecraftVersion("1.19");
 
 	/**
+	 * Version 1.18.2 - caves and cliffs part 2
+	 */
+	public static final MinecraftVersion CAVES_CLIFFS_2_2 = new MinecraftVersion("1.18.2");
+
+	/**
 	 * Version 1.18 - caves and cliffs part 2
 	 */
 	public static final MinecraftVersion CAVES_CLIFFS_2 = new MinecraftVersion("1.18");

@@ -1360,10 +1360,22 @@ public class BukkitConverters {
 	private static MethodAccessor worldHandleAccessor;
 	private static MethodAccessor worldHandleDimensionManagerAccessor;
 
+	private static MethodAccessor dimensionHolderField = null;
+
 	public static EquivalentConverter<World> getDimensionConverter() {
 		return ignoreNull(new EquivalentConverter<World>() {
 			@Override
 			public Object getGeneric(World specific) {
+				if ( MinecraftVersion.CAVES_CLIFFS_2_2.atOrAbove() ) {
+					Object nmsWorld = getWorldConverter().getGeneric( specific );
+
+					if ( dimensionHolderField == null ) {
+						dimensionHolderField = Accessors.getMethodAccessor( nmsWorld.getClass(), "Z" );
+					}
+
+					return dimensionHolderField.invoke( nmsWorld );
+				}
+
 				return getWorldHandleDimensionManagerAccessor().invoke(getWorldHandleAccessor().invoke(specific));
 			}
 
